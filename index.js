@@ -69,16 +69,14 @@ function getCostList(client, productsIds, quantities) {
       const newStock = productValues.qnty - productValues.qntyToBuy;
       //    productsIds(34) quantity=newStock(index)
       quantity[productToBuy] = newStock;
+      productsIds.itemCost = productValues.qntyToBuy * costs[productToBuy];
     } else {
+      productsIds.itemCost = productValues.qnty * costs[productToBuy];
       quantity[productToBuy] = 0;
     }
+    console.log("Item cost", productsIds.itemCost);
     console.log(products[productToBuy], quantity[productToBuy]);
     clientlist.push(productValues);
-  });
-
-  productsIds.map(function (productToBuy, index) {
-    const totalcost = costs[productToBuy] * quantity[productToBuy];
-    console.log("Total cost", totalcost);
   });
 
   // products[productsToBuy] ,   costs[productsToBuy] *  quantity[productsToBuy]
